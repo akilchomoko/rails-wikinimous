@@ -2,14 +2,20 @@
 <html>
   <head>
     <title>RailsWikinimous</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-light bg-light">
+      <span class="navbar-brand mb-0 h1">Wikinimous</span>
+      <button type="button" class="btn btn-outline-primary"><%= link_to "New article", new_article_path %></button>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

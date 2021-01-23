@@ -1,0 +1,44 @@
+class ArticlesController < ApplicationController
+  #Hello welcome!
+
+  before_action :set_article, only: [:edit, :show, :destroy, :update]
+
+  def index
+    @articles = Article.all
+  end
+
+  def create
+    @article = Article.new(params_article)
+    @article.save
+    redirect_to articles_path
+  end
+
+  def new
+    @article = Article.new
+  end
+
+  def edit; end
+
+  def show; end
+
+  def update
+    @article.update(params_article)
+    @article.save
+    redirect_to articles_path
+  end
+
+  def destroy
+    @article.delete
+    redirect_to articles_path
+  end
+
+  private
+
+  def params_article
+    params.require(:article).permit(:title, :content)
+  end
+
+  def set_article
+    @article = Article.find(params[:id])
+  end
+end
